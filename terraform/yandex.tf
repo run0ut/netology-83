@@ -30,6 +30,7 @@ resource "yandex_compute_instance" "vm" {
   for_each = {
     el_instance = "netology-83-elk"
     k_instance = "netology-83-k"
+    fb_instance = "netology-83-fb"
   }
 
   name        = each.value
