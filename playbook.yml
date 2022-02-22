@@ -7,6 +7,7 @@
       service:
         name: elasticsearch
         state: restarted
+      tags: elastic
   tasks:
     - name: "Download Elasticsearch's rpm"
       get_url:
@@ -14,19 +15,23 @@
         dest: "/tmp/elasticsearch-{{ elk_stack_version }}-x86_64.rpm"
       register: download_elastic
       until: download_elastic is succeeded
+      tags: elastic
     - name: Install Elasticsearch
       become: true
       yum:
         name: "/tmp/elasticsearch-{{ elk_stack_version }}-x86_64.rpm"
         state: present
+      tags: elastic
     - name: Configure Elasticsearch
       become: true
       template:
         src: elasticsearch.yml.j2
         dest: /etc/elasticsearch/elasticsearch.yml
+      tags: elastic
     - name: Configure Elastic JVM
       become: true
       template:
         src: elasticsearch_sysconfig.j2
         dest: /etc/sysconfig/elasticsearch
       notify: restart Elasticsearch
+      tags: elastic
