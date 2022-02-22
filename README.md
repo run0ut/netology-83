@@ -44,7 +44,7 @@
     terraform apply -auto-approve
     ```
     На выходе Вы получите внешние IP хостов, что-то вроде:
-    ```toml
+    ```ini
     public_ip = toset([
         "netology-83-elk 84.201.134.204",
         "netology-83-fb 84.252.128.131",
