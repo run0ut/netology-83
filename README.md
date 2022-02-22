@@ -57,4 +57,5 @@
     ansible-playbook -i inventory/prod playbook.yml
     ```
 1. После завершения, зайдите в Кибану. Чтобы найти данные от Filebeat, откройте меню и выберите "Discover"
-![Кибана](media/kibana-screenshot.png)
+
+    ![Кибана](media/kibana-screenshot.png)
